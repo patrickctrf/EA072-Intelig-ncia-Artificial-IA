@@ -39,6 +39,15 @@ H = [vetorExtraDe1, H];
 % O vetor que guarda os valores dos lambdas usados
 lambdasNormais = zeros(1,21);
 
+% Matriz de confusao solicitada
+% Cada linha da matriz eh referente a classe de mesmo indice.
+% Em cada coluna, quantas vezes o classificador escolheu cada classe, sendo
+% que o certo seria escolher o elemento de mesma classe na linha e na
+% coluna (diagonal principal).
+% Podemos dizer que estaremos na linha cujo indice eh indicado no vetor S e
+% a coluna eh a classe escolhida pelo classificador.
+matrizConfusao = zeros(10,10);
+
 %==========CALCULANDO W PARA CADA COEFICIENTE DE REGULARIZACAO=============
 
 i=0;
@@ -298,11 +307,32 @@ lambdaTaxaAcertos = 2^((melhorResultadoTaxaDeAcertosNormal-1-1)*2-18 + (melhorRe
 W_final = ((H'*H+lambdaTaxaAcertos*eye(501))^-1)*H'*S;
 
 
+% ==========Gerando Matriz de Confusao=====================================
+
+% Iterando sobre as diferentes entradas  de X.
+i = 40000 + 1;
+while i<=60000
+
+    % Pegamos a matriz W daquele LAMBDA e multiplicamos para cada
+    % entrada de X (uma de cada vez, de acordo com "i"). 
+    resultadoClassificacao = W_final'*H(i,:)';
+
+    % Verificamos se o resultado da ultima entrada de X foi correto.
+    [~, indiceMaxResuladoClassificacao] = max(resultadoClassificacao);
+    [~, indiceMaxS] = max(S(i,:));
+
+    matrizConfusao(indiceMaxS, indiceMaxResuladoClassificacao) = 1 + matrizConfusao(indiceMaxS, indiceMaxResuladoClassificacao);
+
+    i = i + 1;
+end
+
+% ==========Fim Gerando Matriz de Confusao=================================
+
 fileID = fopen('Q2_175480.txt','w');
 fprintf(fileID, 'ErroQuad: %30.26f\nTaxaAcertos: %30.26f\n', lambdaErroQuad, lambdaTaxaAcertos);
 fclose(fileID);
 
-
+dlmwrite('matrizConfusao.txt', matrizConfusao, 'precision','%6.0f');
 
 figure(1);
 

@@ -20,6 +20,15 @@ X = [vetorExtraDe1, X];
 % O vetor que guarda os valores dos lambdas usados
 lambdasNormais = zeros(1,21);
 
+% Matriz de confusao solicitada
+% Cada linha da matriz eh referente a classe de mesmo indice.
+% Em cada coluna, quantas vezes o classificador escolheu cada classe, sendo
+% que o certo seria escolher o elemento de mesma classe na linha e na
+% coluna (diagonal principal).
+% Podemos dizer que estaremos na linha cujo indice eh indicado no vetor S e
+% a coluna eh a classe escolhida pelo classificador.
+matrizConfusao = zeros(10,10);
+
 %==========CALCULANDO W PARA CADA COEFICIENTE DE REGULARIZACAO=============
 
 i=0;
@@ -261,8 +270,7 @@ while j<=21
         
         i = i + 1;
     end
-    
-    
+
     taxaDeAcertos(j) = acertos(j)/(acertos(j)+erros(j));
     j = j +1;
 end
@@ -278,7 +286,31 @@ lambdaErroQuad = 2^((melhorResultadoErroQuadraticoNormal-1-1)*2-14 + (melhorResu
 lambdaTaxaAcertos = 2^((melhorResultadoTaxaDeAcertosNormal-1-1)*2-14 + (melhorResultadoTaxaDeAcertos-1)*0.2);
 W_final = ((X'*X+lambdaTaxaAcertos*eye(785))^-1)*X'*S;
 
+
+
+% ==========Gerando Matriz de Confusao=====================================
+
+% Iterando sobre as diferentes entradas  de X.
+i = 40000 + 1;
+while i<=60000
+
+    % Pegamos a matriz W daquele LAMBDA e multiplicamos para cada
+    % entrada de X (uma de cada vez, de acordo com "i"). 
+    resultadoClassificacao = W_final'*X(i,:)';
+
+    % Verificamos se o resultado da ultima entrada de X foi correto.
+    [~, indiceMaxResuladoClassificacao] = max(resultadoClassificacao);
+    [~, indiceMaxS] = max(S(i,:));
+
+    matrizConfusao(indiceMaxS, indiceMaxResuladoClassificacao) = 1 + matrizConfusao(indiceMaxS, indiceMaxResuladoClassificacao);
+
+    i = i + 1;
+end
+
+% ==========Fim Gerando Matriz de Confusao=================================
+
 dlmwrite('w175480.txt', W_final, 'precision','%30.26f');
+dlmwrite('matrizConfusao.txt', matrizConfusao, 'precision','%6.0f');
 
 fileID = fopen('p175480.txt','w');
 fprintf(fileID, '%f\n', lambdaTaxaAcertos);
