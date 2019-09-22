@@ -22,7 +22,7 @@ def thread1Camadas(camadas):
 	valoresDropout = [i/100 for i in valoresDropout]# Converte de porcentagem para escala de 0 a 1.
 	
 	# Testando resultados com diferentes quantidades de epocas.
-	for epocas in [4, 8]:
+	for epocas in [8, 4]:
 	
 		# Testando resultados com diferentes quantidades de neuronios.
 		for neuronios in [256, 512]:
@@ -45,7 +45,7 @@ def thread1Camadas(camadas):
 					 tf.keras.layers.Dropout(taxaDropout),# Diferentes valores de dropout.
 					 tf.keras.layers.Dense(10, activation=tf.nn.softmax)
 					])
-					model.compile(optimizer=tf.train.GradientDescentOptimizer(0.17),
+					model.compile(optimizer='adam',
 					 loss='sparse_categorical_crossentropy',
 					 metrics=['accuracy'])
 					model.fit(x_train, y_train, epochs=epocas)
@@ -84,7 +84,7 @@ def thread2Camadas(camadas):
 	valoresDropout = [i/100 for i in valoresDropout]# Converte de porcentagem para escala de 0 a 1.
 	
 	# Testando resultados com diferentes quantidades de epocas.
-	for epocas in [4, 8]:
+	for epocas in [8, 4]:
 	
 		# Testando resultados com diferentes quantidades de neuronios.
 		for neuronios in [256, 512]:
@@ -109,7 +109,7 @@ def thread2Camadas(camadas):
 					 tf.keras.layers.Dropout(taxaDropout),# Diferentes valores de dropout.
 					 tf.keras.layers.Dense(10, activation=tf.nn.softmax)
 					])
-					model.compile(optimizer=tf.train.GradientDescentOptimizer(0.17),
+					model.compile(optimizer='adam',
 					 loss='sparse_categorical_crossentropy',
 					 metrics=['accuracy'])
 					model.fit(x_train, y_train, epochs=epocas)
@@ -148,7 +148,7 @@ def thread3Camadas(camadas):
 	valoresDropout = [i/100 for i in valoresDropout]# Converte de porcentagem para escala de 0 a 1.
 	
 	# Testando resultados com diferentes quantidades de epocas.
-	for epocas in [4, 8]:
+	for epocas in [8, 4]:
 	
 		# Testando resultados com diferentes quantidades de neuronios.
 		for neuronios in [256, 512]:
@@ -175,7 +175,7 @@ def thread3Camadas(camadas):
 					 tf.keras.layers.Dropout(taxaDropout),# Diferentes valores de dropout.
 					 tf.keras.layers.Dense(10, activation=tf.nn.softmax)
 					])
-					model.compile(optimizer=tf.train.GradientDescentOptimizer(0.17),
+					model.compile(optimizer='adam',
 					 loss='sparse_categorical_crossentropy',
 					 metrics=['accuracy'])
 					model.fit(x_train, y_train, epochs=epocas)
@@ -214,7 +214,7 @@ def thread4Camadas(camadas):
 	valoresDropout = [i/100 for i in valoresDropout]# Converte de porcentagem para escala de 0 a 1.
 	
 	# Testando resultados com diferentes quantidades de epocas.
-	for epocas in [4, 8]:
+	for epocas in [8, 4]:
 	
 		# Testando resultados com diferentes quantidades de neuronios.
 		for neuronios in [256, 512]:
@@ -243,7 +243,7 @@ def thread4Camadas(camadas):
 					 tf.keras.layers.Dropout(taxaDropout),# Diferentes valores de dropout.
 					 tf.keras.layers.Dense(10, activation=tf.nn.softmax)
 					])
-					model.compile(optimizer=tf.train.GradientDescentOptimizer(0.17),
+					model.compile(optimizer='adam',
 					 loss='sparse_categorical_crossentropy',
 					 metrics=['accuracy'])
 					model.fit(x_train, y_train, epochs=epocas)
