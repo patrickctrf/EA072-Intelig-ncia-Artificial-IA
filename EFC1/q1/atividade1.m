@@ -302,8 +302,21 @@ while i<=60000
     [~, indiceMaxResuladoClassificacao] = max(resultadoClassificacao);
     [~, indiceMaxS] = max(S(i,:));
 
+    % A linha da matriz a ser preenchida eh o gabarito S. A coluna da celula
+    % sendo incrementada eh a classe que o classificador reconheceu naquela
+    % imagem.
     matrizConfusao(indiceMaxS, indiceMaxResuladoClassificacao) = 1 + matrizConfusao(indiceMaxS, indiceMaxResuladoClassificacao);
 
+    if indiceMaxS == 5 && indiceMaxResuladoClassificacao == 3
+        % Guardamos a imagem de um digitos 5 que foi reconhecido como 3.
+        cincoQuePareceTres = X(i,:);
+    end
+    
+    if indiceMaxS == 3 && indiceMaxResuladoClassificacao == 5
+        % Guardamos a imagem de um digitos 3 que foi reconhecido como 5.
+        tresQuePareceCinco = X(i,:);
+    end
+    
     i = i + 1;
 end
 
@@ -371,3 +384,35 @@ for i = 1:10
     title(num2str(i));
     saveas(fig, strcat('calor',num2str(i)), 'jpeg');
 end
+
+% Vamos reconstruir a imagem do ULTIMO digito 5 reconhecido erroneamente
+% como 3.
+desenhoErradoCinco = zeros(28,28);
+for j = 1:28
+    for k = 1:28
+        desenhoErradoCinco(k,j) = cincoQuePareceTres((29-k)+(j-1)*28);
+    end
+end
+
+fig = figure(15);
+pcolor(1:28,1:28,desenhoErradoCinco);
+colormap(gray(2));
+title(num2str(15));
+saveas(fig, strcat('Cinco que PArece Tres',num2str(15)), 'jpeg');
+
+% Vamos reconstruir a imagem do ULTIMO digito 3 reconhecido erroneamente
+% como 5.
+desenhoErradoTres = zeros(28,28);
+for j = 1:28
+    for k = 1:28
+        desenhoErradoTres(k,j) = tresQuePareceCinco((29-k)+(j-1)*28);
+    end
+end
+
+fig = figure(16);
+pcolor(1:28,1:28,desenhoErradoTres);
+colormap(gray(2));
+title(num2str(16));
+saveas(fig, strcat('Tres que parece Cinco',num2str(16)), 'jpeg');
+
+
