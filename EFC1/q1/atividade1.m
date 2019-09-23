@@ -307,11 +307,15 @@ while i<=60000
     % imagem.
     matrizConfusao(indiceMaxS, indiceMaxResuladoClassificacao) = 1 + matrizConfusao(indiceMaxS, indiceMaxResuladoClassificacao);
 
+    % Pegando um digito 5 que tenha sido confundido com um 3.
+    % No final do programa, tera sido salvo apenas o ultimo 5 confundido com um 3.
     if indiceMaxS == 5 && indiceMaxResuladoClassificacao == 3
         % Guardamos a imagem de um digitos 5 que foi reconhecido como 3.
         cincoQuePareceTres = X(i,:);
     end
     
+    % Pegando um digito 3 que tenha sido confundido com um 5.
+    % No final do programa, tera sido salvo apenas o ultimo 3 confundido com um 5.
     if indiceMaxS == 3 && indiceMaxResuladoClassificacao == 5
         % Guardamos a imagem de um digitos 3 que foi reconhecido como 5.
         tresQuePareceCinco = X(i,:);
