@@ -1,0 +1,5 @@
+  2097152 : max supported app size
+  2206812                     30 files
+	ListaRes\ 01_25.hpappdir
+   562226                     11 files
+	ListaRes\ 26_31.hpappdir

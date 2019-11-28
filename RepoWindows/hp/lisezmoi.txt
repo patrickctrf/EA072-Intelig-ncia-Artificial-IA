@@ -1,0 +1,70 @@
++----------------------------------------------+
+|              mViewer GX2 Creator             |
+|               pour la HP-Prime               |
+|         par Xavier (Critor) Andreani         |
+| http://tiplanet.org/forum/editgx.php?mode=46 |
++----------------------------------------------+
+
+Merci d'avoir cree votre document calculatrice sur TIPlanet.org
+
+
+
+A) Installation de la calculatrice sur l'ordinateur :  (sauter en B si deja fait)
+   ------------------------------------------------
+Vous avez besoin d'un logiciel specifique  pour mettre des fichiers sur la calculatrice.
+Par exemple, le HP-Connectivity Kit :
+https://tiplanet.org/forum/archives_voir.php?id=507172 (for Windows)
+
+
+B) Verification de cette generation :
+   --------------------------------
+Le dernier firmware HP Prime ne supporte pas les applications de plus de 2Mo.
+Ouvrez le fichier 'appslist.txt' ci-joint et verifier qu'aucune application n'excede cette limite.
+Si tres peu d'applications excedent legerement cette limit, vous pouvez essayer d'ouvrir le fichier '.hpappdir.zip' correspondant
+et de deplacer le dernier fichier '.png' vers l'application suivante, ou le premier fichier '.png' vers l'application precedente.
+Ou bien, vous pouvez les changez les valeurs des champs dans votre formulaire de conversion :
+- moins de pages par application
+- une taille d'image plus petite
+- moins de couleurs
+Meme si vous l'avez ferme, vous pouvez toujours reacceder au formulaire de conversion de cette generation en cliquant sur le bouton d'edition sur :
+https://tiplanet.org/forum/myfiles.php?generator=-1
+
+
+C) Envoi des fichiers a la calculatrice :
+   ------------------------------------
+Maintenant que vous avez verifie qu'aucune application n'excedait 2Mo, envoyez tous les fichiers '.hpprgm' et '.hpappdir.zip' ci-joints a la calculatrice.
+
+La calculatrice peut se bloquer pendant le transfert, habituellement a la fin du transfert d'un des fichiers.
+Si cela se produit, redemarrez simplement la calculatrice avec le bouton 'reset' au dos,
+verifiez ce qui a ete transfere correctement et poursuivez avec le reste des fichiers.
+
+La calculatrice peut renvoyer une erreur de memoire.
+Sauf si vous avez vraiment transfere pres de 200Mo de donnees, cela ne veut habituellement pas dire qu'il n'y a plus de place.
+C'est juste la memoire RAM qui pour une certaine raison s'est remplie et ne s'est pas nettoyee.
+Redemarrez simplement la calculatrice, verifiez ce qui a ete transfere correctement et poursuivez avec le reste des fichiers.
+
+
+D) Lecture des fichiers sur la calculatrice :
+   ----------------------------------------
+Au choix :
+- lancer le nouveau programme liste en tapant [Shift] [0]
+- lancer une des nouvelles applications listees en tapant [Apps]
+
+La calculatrice peut echouer a lancer une application.
+C'est habituellement un probleme de memoire RAM, particulierement si vous venez juste de terminer le transfert et n'avez pas encore redemarre la calculatrice.
+Si cela se produit, redemarrez simplement la calculatrice et reessayez immediatement - cela devrait fonctionner.
+Notez que les pages faisant autour de 1Mo necessiteront 15-16Mo de memoire RAM libre pour etre lues correctement,
+ce qui n'est possible qu'a partir du firmware 10077.
+
+Une fois dans le lecteur de document :
+- touches flechees ou ecran tactile pour le defilement progressif
+- [*] ou [/] ou ecran tactile pour le zoom avant ou arriere
+- [1], [2], [3], [4], [6], [7], [8] ou [9] pour un defilement ecran par ecran
+- [+] ou [-] pour aller a la page precedente ou suivante
+- [Num] pour aller a un numero de page specifique
+- [Esc] pour quitter
+
+
+
+Pour le support et l'assistance :
+http://tiplanet.org
